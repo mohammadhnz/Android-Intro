@@ -4,19 +4,45 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ourcw.models.User;
+
 public class MainActivity extends AppCompatActivity {
-    private Button navToRegistrationStudentButton;
-    private Button navToRegistrationTeacherButton;
+    private EditText usernameView;
+    private EditText passwordView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        navToRegistrationStudentButton = findViewById(R.id.navToRegistrationStudentButtonId);
-        navToRegistrationTeacherButton = findViewById(R.id.navToRegistrationTeacherButtonId);
+        Button navToRegistrationStudentButton = findViewById(R.id.navToRegistrationStudentButtonId);
+        Button navToRegistrationTeacherButton = findViewById(R.id.navToRegistrationTeacherButtonId);
+        usernameView = findViewById(R.id.loginUsernameId);
+        passwordView = findViewById(R.id.loginPasswordId);
+        Button loginButton = findViewById(R.id.loginButtonId);
+        loginButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String username = usernameView.getText().toString();
+                String password = passwordView.getText().toString();
+                if (!isEmptyInput(username, password)) {
+                    User user = User.getUserByID(username, password);
+                    if (user != null) {
+                        user.setLogin(true);
+                        //intent to panel
+                    } else {
+                        createToast("mistake in pass or login");
+                    }
+                } else {
+                    createToast("empty input");
+                }
+            }
+        });
         navToRegistrationTeacherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -43,5 +69,13 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private boolean isEmptyInput(String username, String password) {
+        return username.isEmpty() || password.isEmpty();
+    }
+
+    private void createToast(String message) {
+        Toast toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
+        toast.show();
+    }
 
 }

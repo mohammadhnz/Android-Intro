@@ -8,7 +8,7 @@
 
 
     <EditText
-        android:id="@+id/studentLoginUsernameId"
+        android:id="@+id/loginUsernameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -17,7 +17,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/studentLoginPasswordId"
+        android:id="@+id/loginPasswordId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -26,7 +26,7 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/studentLoginButtonId"
+        android:id="@+id/loginButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login" />

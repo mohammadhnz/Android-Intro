@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/studentUsernameID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -16,7 +16,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/studentPasswordId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -25,7 +25,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/studentFirstNameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -34,7 +34,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/studentLastNameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -42,7 +42,7 @@
         android:autofillHints="" />
 
     <EditText
-        android:id="@+id/editTextNumberDecimal"
+        android:id="@+id/studentId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -51,13 +51,13 @@
         android:autofillHints="" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/studentRegisterButtonID"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/register" />
 
     <Button
-        android:id="@+id/teacherBackLoginButtonId"
+        android:id="@+id/studentBackLoginButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/back" />
