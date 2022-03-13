@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">OurCw</string>
+    <string name="title_activity_login">LoginActivity</string>
+    <string name="teacher">Teacher</string>
+    <string name="student">Student</string>
+    <string name="create">Create</string>
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="username">Username</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
