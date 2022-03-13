@@ -9,4 +9,10 @@
     <string name="username">Username</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="register">Register</string>
+    <string name="back">Back</string>
+    <string name="student_id">Student ID</string>
+    <string name="first_name">First Name</string>
+    <string name="student_desc">salam this is for description of our student accesses</string>
+    <string name="teacher_desc">hi this is description of teacher accounts accesses</string>
 </resources>

@@ -10,6 +10,14 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurCw">
         <activity
+            android:name=".TeacherRegistrationActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentRegistrationActivity"
+            android:parentActivityName=".MainActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
@@ -17,7 +25,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
     </application>
 

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+tools:context=".TeacherRegistrationActivity"
+android:orientation="vertical">
+
+<EditText
+    android:id="@+id/editTextTextPersonName"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/username"
+    android:inputType="textPersonName"
+    android:autofillHints="" />
+
+<EditText
+    android:id="@+id/editTextTextPassword"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/password"
+    android:inputType="textPassword"
+    android:autofillHints="" />
+
+<EditText
+    android:id="@+id/editTextTextPersonName2"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/first_name"
+    android:inputType="textPersonName"
+    android:autofillHints="" />
+
+<EditText
+    android:id="@+id/editTextTextPersonName3"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:inputType="textPersonName"
+    android:autofillHints="" />
+
+<EditText
+    android:id="@+id/editTextNumberDecimal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ems="10"
+    android:hint="@string/student_id"
+    android:inputType="numberDecimal"
+    android:autofillHints="" />
+
+<Button
+    android:id="@+id/button"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/register" />
+
+<Button
+    android:id="@+id/teacherBackLoginButtonId"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/back" />
+</LinearLayout>
