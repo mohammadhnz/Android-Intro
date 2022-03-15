@@ -5,6 +5,7 @@ import java.util.List;
 
 public class User {
     private static List<User> users = new ArrayList<>();
+    private ArrayList<Classroom> classrooms = new ArrayList<>();
     private String username;
     private String password;
     private String firstName;
@@ -69,6 +70,14 @@ public class User {
         this.lastName = lastName;
     }
 
+    public ArrayList<Classroom> getClassrooms() {
+        return classrooms;
+    }
+
+    public void setClassrooms(ArrayList<Classroom> classrooms) {
+        this.classrooms = classrooms;
+    }
+
     public boolean isLogin() {
         return isLogin;
     }
@@ -85,4 +94,15 @@ public class User {
         }
         return null;
     }
+
+    public Classroom getUserClassById(String classId){
+        for (Classroom classroom : getClassrooms()) {
+            if (classroom.getClassId().equals(classId)){
+                return classroom;
+            }
+        }
+        return null;
+    }
+
+
 }

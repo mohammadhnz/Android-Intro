@@ -16,4 +16,9 @@
     <string name="student_desc">salam this is for description of our student accesses</string>
     <string name="teacher_desc">hi this is description of teacher accounts accesses</string>
     <string name="university">University</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="textview">TextView</string>
+    <string name="submit">Submit</string>
+    <string name="assignment_name">Assignment Name</string>
 </resources>

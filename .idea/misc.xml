@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/ASA/AndroidStudioProjects/Android-Intro/app/src/main/res/layout/activity_assignment.xml" value="0.25" />
+        <entry key="..\:/Users/ASA/AndroidStudioProjects/Android-Intro/app/src/main/res/layout/activity_classroom.xml" value="0.23958333333333334" />
         <entry key="..\:/Users/ASA/AndroidStudioProjects/Android-Intro/app/src/main/res/layout/activity_main.xml" value="0.2754782700075322" />
         <entry key="..\:/Users/ASA/AndroidStudioProjects/Android-Intro/app/src/main/res/layout/activity_teacher_registration.xml" value="0.18365218000502148" />
         <entry key="..\:/Users/ASA/AndroidStudioProjects/Android-Intro/app/src/main/res/layout/fragment_teacher_login.xml" value="0.13297872340425532" />
