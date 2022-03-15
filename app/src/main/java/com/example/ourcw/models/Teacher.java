@@ -30,6 +30,15 @@ public class Teacher extends User {
         this.university = university;
     }
 
+    public static Teacher getTeacherById(String teacherId){
+        for (Teacher teacher : teachers) {
+            if (teacher.getUsername().equals(teacherId)){
+                return teacher;
+            }
+        }
+        return null;
+    }
+
     public void createClass(String classId, String className){
         //first we check if class exist at all, then if it didn't we create a class and add it to teacher's classes
         if (!Classroom.checkIfClassExist(classId)){
@@ -57,11 +66,33 @@ public class Teacher extends User {
     }
 
     public void scoreAStudentAssignment(String studentId, String classroomId, String assignmentId, double score){
-        //first we check if teacher has this class, then we check if class has this assignment, then we set
-         if (checkIfTeacherHasThisClass(Classroom.getClassByIdFromALlClasses(classroomId))){
-             Classroom classroom = getUserClassById(classroomId);
+        //first we check if class exist, then we check if teacher has this class, then we check
+        //if student with that id has that class and then we set a score for that student assignment
+        if(Classroom.checkIfClassExist(classroomId)){
+            if (checkIfTeacherHasThisClass(Classroom.getClassByIdFromALlClasses(classroomId))){
+                if (Student.getStudentById(studentId).checkIfAlreadyInClass(classroomId)){
+                    Classroom classroom = Student.getStudentById(studentId).getUserClassById(classroomId);
+                    Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
+                    assignment.setScore(score);
+                }
+            }
+        }
+    }
 
-         }
+    public String showStudentsAnswerForAnAssignment(String studentId, String classroomId, String assignmentId, double score){
+        String studentAnswer = "";
+        if(Classroom.checkIfClassExist(classroomId)){
+            if (checkIfTeacherHasThisClass(Classroom.getClassByIdFromALlClasses(classroomId))){
+                if (Student.getStudentById(studentId).checkIfAlreadyInClass(classroomId)){
+                    //its this student classroom
+                    Classroom classroom = Student.getStudentById(studentId).getUserClassById(classroomId);
+                    //get this class's assignment with assignment's id
+                    Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
+                    studentAnswer = assignment.getAnswer();
+                }
+            }
+        }
+        return studentAnswer;
     }
 
     public boolean checkIfTeacherHasThisClass(Classroom classroom){

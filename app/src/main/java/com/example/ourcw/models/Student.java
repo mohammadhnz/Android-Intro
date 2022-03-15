@@ -21,6 +21,7 @@ public class Student extends User {
         }
         return true;
     }
+
     public static List<Student> getStudents() {
         return students;
     }
@@ -35,6 +36,15 @@ public class Student extends User {
 
     public void setStudentID(String studentID) {
         this.studentID = studentID;
+    }
+
+    public static Student getStudentById(String studentId){
+        for (Student student : students) {
+            if (student.getStudentID().equals(studentId)){
+                return student;
+            }
+        }
+        return null;
     }
 
     public boolean checkIfAlreadyInClass(String classId){
@@ -57,7 +67,6 @@ public class Student extends User {
             usersClasses.add(classroom);
             setClassrooms(usersClasses);
             assert classroom != null;
-            classroom.addStudentToClass(this);
         }
     }
 
@@ -75,6 +84,17 @@ public class Student extends User {
             Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
             assignment.setAnswer("");
         }
+    }
+
+    public double checkScoreOfAssignment(String assignmentId, String classroomId){
+        if (checkIfAlreadyInClass(classroomId)){
+            Classroom classroom = getUserClassById(classroomId);
+            if (classroom.checkIfClassHasThisAssignment(assignmentId)){
+                Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
+                return assignment.getScore();
+            }
+        }
+        return 0;
     }
 
 }

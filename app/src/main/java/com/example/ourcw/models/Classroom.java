@@ -7,7 +7,6 @@ public class Classroom {
     private String className;
     private String teacherUsername;
     private ArrayList<Assignment> assignments = new ArrayList<>();
-    private ArrayList<Student> studentsInClass = new ArrayList<>();
     public static ArrayList<Classroom> classrooms = new ArrayList<>();
 
     public Classroom(String classId, String className, String teacherUsername) {
@@ -29,9 +28,6 @@ public class Classroom {
         assignments.add(assignment);
     }
 
-    public void addStudentToClass(Student student){
-        studentsInClass.add(student);
-    }
 
     public static Classroom getClassByIdFromALlClasses(String classId){
         for (Classroom classroom : classrooms) {
