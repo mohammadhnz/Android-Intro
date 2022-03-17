@@ -10,7 +10,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurCw">
         <activity
-            android:name=".AssignmentActivity"
+            android:name=".StudentAssignmentPageActivity"
+            android:parentActivityName=".ClassroomActivity"
             android:exported="false" />
         <activity
             android:name=".ClassroomActivity"

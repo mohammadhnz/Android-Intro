@@ -78,7 +78,7 @@ public class Student extends User {
         }
     }
 
-    public void deleteAssignmentAnswer(String classId, String assignmentId, String newAnswer){
+    public void deleteAssignmentAnswer(String classId, String assignmentId){
         Classroom classroom = getUserClassById(classId);
         if (classroom.checkIfClassHasThisAssignment(assignmentId)){
             Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);

@@ -13,6 +13,11 @@ public class Assignment {
         this.assignmentId = assignmentId;
         this.assignmentName = assignmentName;
         this.alreadyHasAnswer = false;
+        this.score = 0.0;
+    }
+
+    public String getAssignmentName() {
+        return assignmentName;
     }
 
     public void setQuestion(String question) {
