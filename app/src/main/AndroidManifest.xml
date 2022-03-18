@@ -10,13 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurCw">
         <activity
-            android:name=".TeacherRegistrationActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".StudentAssignmentPageActivity"
+            android:parentActivityName=".ClassroomActivity"
             android:exported="false" />
         <activity
-            android:name=".StudentRegistrationActivity"
-            android:parentActivityName=".MainActivity"
+            android:name=".ClassroomActivity"
             android:exported="false" />
+        <activity
+            android:name=".TeacherRegistrationActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".StudentRegistrationActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="true">
