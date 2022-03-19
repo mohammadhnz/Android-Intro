@@ -1,6 +1,8 @@
 package com.example.ourcw;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,12 +12,15 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ourcw.controllers.Database;
 import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.User;
 
 public class MainActivity extends AppCompatActivity {
     private EditText usernameView;
     private EditText passwordView;
+    private SharedPreferences sharedPreferences;
+    private static final String preferencesKey = "OurCw";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Database.getInstance().retrieveAllData(getSharedPreferences(preferencesKey, Context.MODE_PRIVATE));
                 String username = usernameView.getText().toString();
                 String password = passwordView.getText().toString();
                 if (!isEmptyInput(username, password)) {
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
         navToRegistrationTeacherButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Database.getInstance().retrieveAllData(getSharedPreferences(preferencesKey, Context.MODE_PRIVATE));
                 Intent intent = new Intent(
                         MainActivity.this,
                         TeacherRegistrationActivity.class
@@ -56,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
         navToRegistrationStudentButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Database.getInstance().retrieveAllData(getSharedPreferences(preferencesKey, Context.MODE_PRIVATE));
                 Intent intent = new Intent(
                         MainActivity.this,
                         StudentRegistrationActivity.class
