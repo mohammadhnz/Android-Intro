@@ -47,6 +47,10 @@ public class Teacher extends User {
             this.setClassrooms(c);
         }
     }
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
 
     public void createAssignment(String assignmentId, String assignmentName, String classroomId) {
         //first we check if teacher has this class to create an assignment for; then we check if assignment does not already exist

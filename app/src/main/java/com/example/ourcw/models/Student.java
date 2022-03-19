@@ -52,9 +52,9 @@ public class  Student extends User {
         Classroom classroom = null;
         if (Classroom.checkIfClassExist(classId)){
             classroom = Classroom.getClassByIdFromALlClasses(classId);
+            return getClassrooms().contains(classroom) && classroom != null;
         }
-        else return false;
-        return getClassrooms().contains(classroom) && classroom != null;
+        return false;
     }
 
     public void joinClass(String classId){
@@ -84,6 +84,16 @@ public class  Student extends User {
             Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
             assignment.setAnswer("");
         }
+    }
+
+    public ArrayList<Classroom> classesStudentDoesNotHave(){
+        ArrayList<Classroom> otherClasses = new ArrayList<>();
+        for (Classroom classroom : getClassrooms()) {
+            if (checkIfAlreadyInClass(classroom.getClassId())){
+                otherClasses.add(classroom);
+            }
+        }
+        return otherClasses;
     }
 
     public double checkScoreOfAssignment(String assignmentId, String classroomId){

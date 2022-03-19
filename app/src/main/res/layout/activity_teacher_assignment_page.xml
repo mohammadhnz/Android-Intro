@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".StudentAssignmentPageActivity">
+    tools:context=".TeacherAssignmentPageActivity">
 
     <EditText
         android:id="@+id/assignmentNameId"
-        android:layout_width="225dp"
-        android:layout_height="49dp"
+        android:layout_width="257dp"
+        android:layout_height="53dp"
         android:background="#D39494"
         android:backgroundTint="#CFDDD2"
         android:ems="10"
@@ -21,84 +21,90 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195" />
+        app:layout_constraintVertical_bias="0.224" />
 
     <TextView
-        android:id="@+id/assignmentAnswerId"
-        android:layout_width="224dp"
-        android:layout_height="126dp"
-        android:background="#D4EFED"
-        android:text="@string/textview"
+        android:id="@+id/studentAnswerId"
+        android:layout_width="254dp"
+        android:layout_height="193dp"
+        android:background="#CFEDF1"
+        android:text="answer"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assignmentNameId"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintVertical_bias="0.057" />
 
     <Button
-        android:id="@+id/submitAnsBtnId"
+        android:id="@+id/submitAssignmentScoreId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="43dp"
-        android:text="@string/submit"
+        android:text="Submit score"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.19"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignmentAnswerId"
-        app:layout_constraintVertical_bias="0.096" />
-
-    <Button
-        android:id="@+id/deleteAnsBtnId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.621"
-        app:layout_constraintStart_toEndOf="@+id/submitAnsBtnId"
-        app:layout_constraintTop_toBottomOf="@+id/assignmentAnswerId"
-        app:layout_constraintVertical_bias="0.202" />
-
-    <Button
-        android:id="@+id/editAnsBtnId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/assignmentAnswerId"
-        app:layout_constraintVertical_bias="0.202" />
-
-    <ImageButton
-        android:id="@+id/closeAssignmentBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.954"
+        app:layout_constraintHorizontal_bias="0.713"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintVertical_bias="0.651" />
+
+    <Button
+        android:id="@+id/editAssignmentScoreId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="edit score"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.657"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.737" />
 
     <EditText
-        android:id="@+id/assignmentScoreId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/studentScoreId"
+        android:layout_width="96dp"
+        android:layout_height="101dp"
+        android:background="#D5C8ED"
         android:ems="10"
         android:hint="Score"
-        android:inputType="numberSigned|number|text|numberDecimal"
-        android:minHeight="48dp"
+        android:inputType="numberDecimal|numberSigned"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintHorizontal_bias="0.244"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:layout_constraintVertical_bias="0.715">
+
+    </EditText>
+
+    <EditText
+        android:id="@+id/studentNameAndId"
+        android:layout_width="230dp"
+        android:layout_height="48dp"
+        android:background="#D1F8F4"
+        android:ems="10"
+        android:hint="student Name / Id"
+        android:inputType="numberDecimal|numberSigned"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.232"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.131">
+
+    </EditText>
+
+    <ImageButton
+        android:id="@+id/closeAssignmentPageId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.057"
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

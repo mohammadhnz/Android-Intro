@@ -10,9 +10,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurCw">
         <activity
-            android:name=".StudentAssignmentPageActivity"
-            android:parentActivityName=".ClassroomActivity"
+            android:name=".TeacherPanelPageActivity"
             android:exported="false" />
+        <activity
+            android:name=".StudentPanelPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".TeacherAssignmentPageActivity"
+            android:exported="false" />
+        <activity
+            android:name=".StudentAssignmentPageActivity"
+            android:exported="false"
+            android:parentActivityName=".ClassroomActivity" />
         <activity
             android:name=".ClassroomActivity"
             android:exported="false" />
@@ -33,6 +42,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

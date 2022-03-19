@@ -7,12 +7,10 @@ public class Assignment {
     private String question;
     private Teacher teacherName;
     private double score;
-    private boolean alreadyHasAnswer;
 
     public Assignment(String assignmentId, String assignmentName) {
         this.assignmentId = assignmentId;
         this.assignmentName = assignmentName;
-        this.alreadyHasAnswer = false;
         this.score = 0.0;
     }
 
@@ -26,10 +24,6 @@ public class Assignment {
 
     public String getQuestion() {
         return question;
-    }
-
-    public void setAlreadyHasAnswer(boolean alreadyHasAnswer) {
-        this.alreadyHasAnswer = alreadyHasAnswer;
     }
 
     public String getAnswer() {
@@ -54,6 +48,10 @@ public class Assignment {
 
     public double getScore() {
         return score;
+    }
+
+    public boolean isAlreadyHasAnswer(){
+        return answer != null;
     }
 
 }
