@@ -83,7 +83,8 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.023"
-        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel" />
+        app:srcCompat="@android:drawable/ic_menu_close_clear_cancel"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <EditText
         android:id="@+id/assignmentScoreId"
@@ -92,7 +93,12 @@
         android:ems="10"
         android:hint="Score"
         android:inputType="numberSigned|number|text|numberDecimal"
-        tools:layout_editor_absoluteX="101dp"
-        tools:layout_editor_absoluteY="509dp" />
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.814" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

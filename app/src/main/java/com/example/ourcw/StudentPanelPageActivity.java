@@ -60,14 +60,14 @@ public class StudentPanelPageActivity extends AppCompatActivity implements Class
 
         classesRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         assert student != null;
-        adapter = new ClassesRecyclerViewAdapter(this, studentClassrooms, StudentPanelPageActivity.this, false);
+        adapter = new ClassesRecyclerViewAdapter(this, studentClassrooms, StudentPanelPageActivity.this, true);
         classesRecyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
         addNewClassBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                newAdapter = new ClassesRecyclerViewAdapter(StudentPanelPageActivity.this, newClassrooms, StudentPanelPageActivity.this, true);
+                newAdapter = new ClassesRecyclerViewAdapter(StudentPanelPageActivity.this, newClassrooms, StudentPanelPageActivity.this, false);
                 newClassesRecyclerView = findViewById(R.id.newClassesRecyclerId);
                 newClassesRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
                 newClassesRecyclerView.setAdapter(newAdapter);

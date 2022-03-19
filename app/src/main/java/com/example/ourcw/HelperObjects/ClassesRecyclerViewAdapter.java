@@ -19,7 +19,7 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
     ArrayList<Classroom> classrooms;
     private LayoutInflater inflater;
     OnNoteListener onNoteListener;
-    boolean showClass = false;
+    boolean showClass = true;
 
     public ClassesRecyclerViewAdapter(Context context, ArrayList<Classroom> classrooms, OnNoteListener onNoteListener, boolean showClass) {
         this.classrooms = classrooms;
@@ -66,7 +66,7 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
 
         @Override
         public void onClick(View view) {
-            if (!showClass){
+            if (showClass){
                 onNoteListener.onNoteClickShowClassPage(getAdapterPosition());
             }else onNoteListener.onNoteClickAddClass(getAdapterPosition());
         }

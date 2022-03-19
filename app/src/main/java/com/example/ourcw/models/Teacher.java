@@ -39,6 +39,11 @@ public class Teacher extends User {
         return null;
     }
 
+    @Override
+    public String getUsername() {
+        return super.getUsername();
+    }
+
     public void createClass(String classId, String className){
         //first we check if class exist at all, then if it didn't we create a class and add it to teacher's classes
         if (!Classroom.checkIfClassExist(classId)){
