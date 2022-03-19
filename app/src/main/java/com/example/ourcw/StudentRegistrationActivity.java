@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Student;
 
 public class StudentRegistrationActivity extends AppCompatActivity {
@@ -60,13 +61,14 @@ public class StudentRegistrationActivity extends AppCompatActivity {
                             )
                     ) {
                         if (Student.is_username_valid(username.getText().toString())) {
-                            Student student = new Student(
+                            String response = UserController.getInstance().registerStudent(
                                     sUsername,
                                     sPassword,
                                     sFirstname,
                                     sLastname,
                                     sStudentID
                             );
+                            createToast(response);
                             Intent intent1 = new Intent();
                             setResult(100, intent1);
                             finish();

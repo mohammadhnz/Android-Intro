@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Student;
 import com.example.ourcw.models.Teacher;
 
@@ -54,7 +55,7 @@ public class TeacherRegistrationActivity extends AppCompatActivity {
                 String sUniversityID = universityID.getText().toString();
                 if (!isThereEmptyInput(sUsername, sPassword, sFirstname, sLastname, sUniversityID)) {
                     if (Student.is_username_valid(username.getText().toString())) {
-                        Teacher teacher = new Teacher(
+                        String response = UserController.getInstance().registerTeacher(
                                 sUsername,
                                 sPassword,
                                 sFirstname,

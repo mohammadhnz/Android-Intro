@@ -40,9 +40,6 @@ public class UserController {
             return "Error: You already logged in";
         }
         currentUser = new Teacher(username, password, firstName, lastName, university);
-        if (currentUser == null) {
-            return "Error: Login failed.";
-        }
         this.user = currentUser;
         return "Successful!";
     }
@@ -57,9 +54,6 @@ public class UserController {
             return "Error: You already logged in";
         }
         currentUser = new Student(username, password, firstName, lastName, studentId);
-        if (currentUser == null) {
-            return "Error! Login failed.";
-        }
         this.user = currentUser;
         return "Successful!";
     }
@@ -80,11 +74,24 @@ public class UserController {
     }
 
     public String login(String username, String password) {
+        if (this.user != null) {
+            return "Error! You already logged in as a " + this.getCurrentUserType();
+        }
         User currentUser = User.login(username, password);
         if (currentUser == null) {
             return "Error! Login failed.";
         }
         this.user = currentUser;
         return "Successful!";
+    }
+
+    public String getCurrentUserType() {
+        if (this.user == null) {
+            return "Error! You are not logged in";
+        }
+        if (this.user instanceof Teacher) {
+            return "Teacher";
+        }
+        return "Student";
     }
 }
