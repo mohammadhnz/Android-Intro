@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 
 import com.example.ourcw.HelperObjects.ClassesRecyclerViewAdapter;
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Classroom;
 import com.example.ourcw.models.Student;
 
@@ -52,8 +53,7 @@ public class StudentPanelPageActivity extends AppCompatActivity implements Class
         newClassesRecyclerView = findViewById(R.id.newClassesRecyclerId);
         addNewClassBtn = findViewById(R.id.addNewClassBtnId);
 
-        String studentId = intent.getStringExtra("studentId");
-        student = Student.getStudentById(studentId);
+        student = (Student) UserController.getInstance().getCurrentUser();
         assert student != null;
         studentClassrooms = student.getClassrooms();
         newClassrooms = student.classesStudentDoesNotHave();
