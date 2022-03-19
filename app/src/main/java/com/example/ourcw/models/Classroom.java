@@ -20,6 +20,14 @@ public class Classroom {
         return classId;
     }
 
+    public String getClassName() {
+        return className;
+    }
+
+    public String getTeacherUsername() {
+        return teacherUsername;
+    }
+
     public ArrayList<Assignment> getAssignments() {
         return assignments;
     }
@@ -63,10 +71,6 @@ public class Classroom {
             }
         }
         return false;
-    }
-
-    public Teacher getTeacherOfClassWithUsername(String teacherUsername){
-        return Teacher.getTeacherByUsername(teacherUsername);
     }
 
 

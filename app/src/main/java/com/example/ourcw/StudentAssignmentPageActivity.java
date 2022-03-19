@@ -1,7 +1,9 @@
 package com.example.ourcw;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.ourcw.models.Assignment;
 import com.example.ourcw.models.Classroom;
@@ -61,31 +64,89 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
 
         assignmentName.setText(assignment.getAssignmentName());
 
-        if (assignment.getAnswer() == null){
-            assignmentAnswer.setText("");
-        }else assignmentAnswer.setText(assignment.getAnswer());
+        if (assignment.isAlreadyHasAnswer()){
+            assignmentAnswer.setText(assignment.getAnswer());
+        }else assignmentAnswer.setText("");
 
         assignmentScore.setText(String.valueOf(assignment.getScore()));
 
         submitAnsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Objects.requireNonNull(Student.getStudentById(studentId)).submitAssignmentAnswer(
-                        classroomId, assignmentId, assignmentAnswer.getText().toString());
+                AlertDialog.Builder alertSubmit = new AlertDialog.Builder(StudentAssignmentPageActivity.this);
+                alertSubmit.setTitle("Submitting Assignment");
+                alertSubmit.setMessage("Are you sure you want to submit your answer?");
+                alertSubmit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Objects.requireNonNull(Student.getStudentById(studentId)).submitAssignmentAnswer(
+                                classroomId, assignmentId, assignmentAnswer.getText().toString());
+                        Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer submitted", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+                alertSubmit.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        assignmentAnswer.setText(assignment.getAnswer());
+                        Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer is not submitted", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+                alertSubmit.show();
             }
         });
+
         editAnsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Objects.requireNonNull(Student.getStudentById(studentId)).submitAssignmentAnswer(
-                        classroomId, assignmentId, assignmentAnswer.getText().toString());
+                AlertDialog.Builder alertEdit = new AlertDialog.Builder(StudentAssignmentPageActivity.this);
+                alertEdit.setTitle("Editing Assignment");
+                alertEdit.setMessage("Are you sure you want to edit your answer?");
+                alertEdit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Objects.requireNonNull(Student.getStudentById(studentId)).submitAssignmentAnswer(
+                                classroomId, assignmentId, assignmentAnswer.getText().toString());
+                        Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer edited", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+                alertEdit.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        assignmentAnswer.setText(assignment.getAnswer());
+                        Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer is not edited", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+                alertEdit.show();
             }
         });
 
         deleteAnsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Objects.requireNonNull(Student.getStudentById(studentId)).deleteAssignmentAnswer(classroomId, assignmentId);
+                AlertDialog.Builder alertDelete = new AlertDialog.Builder(StudentAssignmentPageActivity.this);
+                alertDelete.setTitle("Deleting Assignment Answer");
+                alertDelete.setMessage("Are you sure you want to delete your answer?");
+                alertDelete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Objects.requireNonNull(Student.getStudentById(studentId)).deleteAssignmentAnswer(classroomId, assignmentId);
+                        assignmentAnswer.setText("");
+                        Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "assignment deleted", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+                alertDelete.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "not deleted", Toast.LENGTH_LONG);
+                        toast.show();
+                    }
+                });
+                alertDelete.show();
             }
         });
     }
