@@ -10,6 +10,7 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.User;
 
 public class MainActivity extends AppCompatActivity {
@@ -31,12 +32,9 @@ public class MainActivity extends AppCompatActivity {
                 String username = usernameView.getText().toString();
                 String password = passwordView.getText().toString();
                 if (!isEmptyInput(username, password)) {
-                    User user = User.getUserByID(username, password);
-                    if (user != null) {
-                        user.setLogin(true);
-                        //intent to panel
-                    } else {
-                        createToast("mistake in pass or login");
+                    String loginData = UserController.getInstance().login(username, password);
+                    createToast(loginData);
+                    if (!loginData.startsWith("Error")) {
                     }
                 } else {
                     createToast("empty input");
@@ -69,7 +67,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    private boolean isEmptyInput(String username, String password) {
+    private boolean
+    isEmptyInput(String username, String password) {
         return username.isEmpty() || password.isEmpty();
     }
 

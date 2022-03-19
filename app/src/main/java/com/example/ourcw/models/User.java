@@ -3,8 +3,8 @@ package com.example.ourcw.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
-    private static List<User> users = new ArrayList<>();
+public abstract class User {
+    private static ArrayList<User> users = new ArrayList<>();
     private ArrayList<Classroom> classrooms = new ArrayList<>();
     private String username;
     private String password;
@@ -29,12 +29,11 @@ public class User {
         }
         return true;
     }
-
     public static List<User> getUsers() {
         return users;
     }
 
-    public static void setUsers(List<User> users) {
+    public static void setUsers(ArrayList<User> users) {
         User.users = users;
     }
 
@@ -86,7 +85,7 @@ public class User {
         isLogin = login;
     }
 
-    public static User getUserByID(String username, String password) {
+    public static User login(String username, String password) {
         for (int i = 0; i < users.size(); i += 1) {
             if (users.get(i).username.equals(username) && users.get(i).password.equals(password)) {
                 return users.get(i);
@@ -95,9 +94,9 @@ public class User {
         return null;
     }
 
-    public Classroom getUserClassById(String classId){
+    public Classroom getUserClassById(String classId) {
         for (Classroom classroom : getClassrooms()) {
-            if (classroom.getClassId().equals(classId)){
+            if (classroom.getClassId().equals(classId)) {
                 return classroom;
             }
         }
