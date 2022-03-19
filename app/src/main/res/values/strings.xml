@@ -21,4 +21,7 @@
     <string name="textview">TextView</string>
     <string name="submit">Submit</string>
     <string name="assignment_name">Assignment Name</string>
+    <string name="login_successful_message">Successfully login</string>
+    <string name="login_failed_message">failed login</string>
+    <string name="once_login_error_message">\"you loginned as \"</string>
 </resources>

@@ -13,6 +13,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.ourcw.controllers.Database;
+import com.example.ourcw.controllers.Exceptions.LoginExceptions;
+import com.example.ourcw.controllers.Exceptions.LoginOnceException;
 import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.User;
 
@@ -38,9 +40,25 @@ public class MainActivity extends AppCompatActivity {
                 String username = usernameView.getText().toString();
                 String password = passwordView.getText().toString();
                 if (!isEmptyInput(username, password)) {
-                    String loginData = UserController.getInstance().login(username, password);
-                    createToast(loginData);
-                    if (!loginData.startsWith("Error")) {
+                    String loginResultMessage = "";
+                    try {
+                        UserController.getInstance().login(username, password);
+                        loginResultMessage = getString(
+                                R.string.login_successful_message
+                        );
+                        createIntentToPanel(
+                                UserController.getInstance().getCurrentUserType()
+                        );
+                    } catch (LoginExceptions loginExceptions) {
+                        loginResultMessage = getString(
+                                R.string.login_failed_message
+                        );
+                    } catch (LoginOnceException loginOnceException) {
+                        loginResultMessage = getString(
+                                R.string.once_login_error_message
+                        ) + loginOnceException.getUserType();
+                    } finally {
+                        createToast(loginResultMessage);
                     }
                 } else {
                     createToast("empty input");
@@ -83,6 +101,22 @@ public class MainActivity extends AppCompatActivity {
     private void createToast(String message) {
         Toast toast = Toast.makeText(MainActivity.this, message, Toast.LENGTH_LONG);
         toast.show();
+    }
+
+    private void createIntentToPanel(String userType) {
+        Intent intent = null;
+        if (userType.equals("Student")) {
+            intent = new Intent(
+                    MainActivity.this,
+                    StudentPanelPageActivity.class
+            );
+        } else {
+            intent = new Intent(
+                    MainActivity.this,
+                    TeacherPanelPageActivity.class
+            );
+        }
+        startActivity(intent);
     }
 
 }

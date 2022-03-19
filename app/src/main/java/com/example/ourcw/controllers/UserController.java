@@ -1,11 +1,12 @@
 package com.example.ourcw.controllers;
 
+import com.example.ourcw.controllers.Exceptions.LoginExceptions;
+import com.example.ourcw.controllers.Exceptions.LoginOnceException;
 import com.example.ourcw.models.Student;
 import com.example.ourcw.models.Teacher;
 import com.example.ourcw.models.User;
 import com.google.gson.Gson;
 
-import java.io.DataOutputStream;
 import java.util.ArrayList;
 
 
@@ -79,16 +80,15 @@ public class UserController {
         return currentUser;
     }
 
-    public String login(String username, String password) {
+    public void login(String username, String password) throws LoginOnceException, LoginExceptions {
         if (this.user != null) {
-            return "Error! You already logged in as a " + this.getCurrentUserType();
+            throw new LoginOnceException(this.getCurrentUserType());
         }
         User currentUser = User.login(username, password);
         if (currentUser == null) {
-            return "Error! Login failed.";
+            throw new LoginExceptions();
         }
         this.user = currentUser;
-        return "Successful!";
     }
 
     public String getCurrentUserType() {
