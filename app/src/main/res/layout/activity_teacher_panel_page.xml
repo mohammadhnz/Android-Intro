@@ -30,7 +30,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.078" />
 
-    <TextView
+    <EditText
         android:id="@+id/newClassIdTextId"
         android:layout_width="230dp"
         android:layout_height="46dp"
@@ -41,9 +41,10 @@
         app:layout_constraintHorizontal_bias="0.74"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.738" />
+        app:layout_constraintVertical_bias="0.738"
+        tools:ignore="TouchTargetSizeCheck" />
 
-    <TextView
+    <EditText
         android:id="@+id/newClassNameTextId"
         android:layout_width="226dp"
         android:layout_height="50dp"

@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,8 +27,8 @@ import java.util.ArrayList;
 public class TeacherPanelPageActivity extends AppCompatActivity implements ClassesRecyclerViewAdapter.OnNoteListener{
 
     RecyclerView teacherClassesRecycler;
-    TextView newClassId;
-    TextView newClassName;
+    EditText newClassId;
+    EditText newClassName;
     Button addNewClassButton;
     ImageButton closeTeacherPanelPage;
     ClassesRecyclerViewAdapter adapter;
@@ -55,7 +56,7 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
         teacherClassesRecycler = findViewById(R.id.teachersClassesRecyclerId);
         newClassId = findViewById(R.id.newClassIdTextId);
         newClassName = findViewById(R.id.newClassNameTextId);
-        addNewClassButton = findViewById(R.id.addNewClassBtnId);
+        addNewClassButton = findViewById(R.id.teacherAddNewClassBtnId);
 
 
         teacher = (Teacher) UserController.getInstance().getCurrentUser();
@@ -90,6 +91,8 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
                             adapter.notifyDataSetChanged();
                             Toast toast = Toast.makeText(TeacherPanelPageActivity.this, "class create", Toast.LENGTH_LONG);
                             toast.show();
+                            newClassName.setText("");
+                            newClassId.setText("");
                         }
                     }
                 });
