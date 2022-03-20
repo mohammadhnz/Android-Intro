@@ -43,8 +43,8 @@ public class UserController {
         if (this.user != null) {
             return "Error: You already logged in";
         }
-        this.user = new Teacher(username, password, firstName, lastName, university);
-        this.allTeachers.add((Teacher) this.user);
+        Teacher teacher = new Teacher(username, password, firstName, lastName, university);
+        this.allTeachers.add((Teacher) teacher);
         this.saveAllTeachers();
         return "Successful!";
     }
@@ -58,8 +58,8 @@ public class UserController {
         if (this.user != null) {
             return "Error: You already logged in";
         }
-        this.user = new Student(username, password, firstName, lastName, studentId);
-        this.allStudents.add((Student) this.user);
+        Student student = new Student(username, password, firstName, lastName, studentId);
+        this.allStudents.add((Student) student);
         this.saveAllStudents();
         return "Successful!";
     }
