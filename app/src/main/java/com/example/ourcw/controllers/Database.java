@@ -56,7 +56,7 @@ public class Database {
         retrieveStudentsData(teachersData, gson);
         retrieveTeachersData(studentsData, gson);
 
-
+        UserController.getInstance().resetAllUsers();
 
         this.dataRetrievedAlready = true;
     }

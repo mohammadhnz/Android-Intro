@@ -15,7 +15,6 @@ public class UserController {
     private User user;
     private ArrayList<Teacher> allTeachers = new ArrayList<>();
     private ArrayList<Student> allStudents = new ArrayList<>();
-    private static User currentUser;
 
     public static final String StudentDataKey = "all_students";
     public static final String TeacherDataKey = "all_teachers";
@@ -41,11 +40,11 @@ public class UserController {
                 return "Error: Teacher exists with this username";
             }
         }
-        if (currentUser != null) {
+        if (this.user != null) {
             return "Error: You already logged in";
         }
-        currentUser = new Teacher(username, password, firstName, lastName, university);
-        this.allTeachers.add((Teacher) currentUser);
+        this.user = new Teacher(username, password, firstName, lastName, university);
+        this.allTeachers.add((Teacher) this.user);
         this.saveAllTeachers();
         return "Successful!";
     }
@@ -56,28 +55,28 @@ public class UserController {
                 return "Error: Student exists with this username";
             }
         }
-        if (currentUser != null) {
+        if (this.user != null) {
             return "Error: You already logged in";
         }
-        currentUser = new Student(username, password, firstName, lastName, studentId);
-        this.allStudents.add((Student) currentUser);
+        this.user = new Student(username, password, firstName, lastName, studentId);
+        this.allStudents.add((Student) this.user);
         this.saveAllStudents();
         return "Successful!";
     }
 
     public String logout() {
-        if (currentUser == null) {
+        if (this.user == null) {
             return "Error: You are not logged in.";
         }
-        currentUser = null;
+        this.user = null;
         return "Logged out";
     }
 
     public User getCurrentUser() {
-        if (currentUser == null) {
+        if (this.user == null) {
             return null;
         }
-        return currentUser;
+        return this.user;
     }
 
     public void login(String username, String password) throws LoginOnceException, LoginExceptions {
@@ -107,6 +106,15 @@ public class UserController {
 
     public void setAllStudents(ArrayList<Student> allStudents) {
         this.allStudents = allStudents;
+    }
+
+    public void resetAllUsers() {
+        ArrayList<User> users = new ArrayList<>();
+        users.addAll(allTeachers);
+        users.addAll(allStudents);
+        User.setUsers(users);
+        Teacher.setTeachers(allTeachers);
+        Student.setStudents(allStudents);
     }
 
     public ArrayList<Teacher> getAllTeachers() {
