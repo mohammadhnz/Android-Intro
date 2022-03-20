@@ -16,7 +16,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.ourcw.HelperObjects.ClassesRecyclerViewAdapter;
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Classroom;
+import com.example.ourcw.models.Student;
 import com.example.ourcw.models.Teacher;
 
 import java.util.ArrayList;
@@ -55,8 +57,8 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
         newClassName = findViewById(R.id.newClassNameTextId);
         addNewClassButton = findViewById(R.id.addNewClassBtnId);
 
-        String teacherId = intent.getStringExtra("teacherId");
-        teacher = Teacher.getTeacherByUsername(teacherId);
+
+        teacher = (Teacher) UserController.getInstance().getCurrentUser();
         assert teacher != null;
         classrooms = teacher.getClassrooms();
 

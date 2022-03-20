@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Assignment;
 import com.example.ourcw.models.Classroom;
 import com.example.ourcw.models.Student;
@@ -52,12 +53,12 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
         assignmentScore = findViewById(R.id.assignmentScoreId);
 
 
-        String studentId = intent.getStringExtra("studentId");
+
         String assignmentId = intent.getStringExtra("assignmentId");
         String classroomId = intent.getStringExtra("classroomId");
 
 
-        Student student = Student.getStudentById(studentId);
+        Student student = (Student) UserController.getInstance().getCurrentUser();
         assert student != null;
         Classroom classroom = student.getUserClassById(classroomId);
         Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
@@ -79,7 +80,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertSubmit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Objects.requireNonNull(Student.getStudentById(studentId)).submitAssignmentAnswer(
+                        student.submitAssignmentAnswer(
                                 classroomId, assignmentId, assignmentAnswer.getText().toString());
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer submitted", Toast.LENGTH_LONG);
                         toast.show();
@@ -106,7 +107,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertEdit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Objects.requireNonNull(Student.getStudentById(studentId)).submitAssignmentAnswer(
+                        student.submitAssignmentAnswer(
                                 classroomId, assignmentId, assignmentAnswer.getText().toString());
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer edited", Toast.LENGTH_LONG);
                         toast.show();
@@ -133,7 +134,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertDelete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        Objects.requireNonNull(Student.getStudentById(studentId)).deleteAssignmentAnswer(classroomId, assignmentId);
+                        student.deleteAssignmentAnswer(classroomId, assignmentId);
                         assignmentAnswer.setText("");
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "assignment deleted", Toast.LENGTH_LONG);
                         toast.show();

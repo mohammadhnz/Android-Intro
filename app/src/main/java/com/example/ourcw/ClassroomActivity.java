@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.ourcw.HelperObjects.AssignmentsRecyclerViewAdapter;
 import com.example.ourcw.HelperObjects.ClassesRecyclerViewAdapter;
+import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Assignment;
 import com.example.ourcw.models.Classroom;
 import com.example.ourcw.models.Student;
@@ -50,8 +51,7 @@ public class ClassroomActivity extends AppCompatActivity implements AssignmentsR
         className = findViewById(R.id.classroomNameId);
         teacherName = findViewById(R.id.teacherOfClassNameTextId);
 
-        String studentId = intent.getStringExtra("studentId");
-        student = Student.getStudentById(studentId);
+        student = (Student) UserController.getInstance().getCurrentUser();
         String classroomId = intent.getStringExtra("classId");
         classroom = student.getUserClassById(classroomId);
         assignments = classroom.getAssignments();
