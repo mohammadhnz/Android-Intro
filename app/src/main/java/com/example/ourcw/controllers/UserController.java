@@ -81,7 +81,8 @@ public class UserController {
 
     public void login(String username, String password) throws LoginOnceException, LoginExceptions {
         if (this.user != null) {
-            throw new LoginOnceException(this.getCurrentUserType());
+            if (!this.user.getPassword().equals(password) || !this.user.getUsername().equals(username))
+                throw new LoginOnceException(this.getCurrentUserType());
         }
         User currentUser = User.login(username, password);
         if (currentUser == null) {
@@ -124,6 +125,7 @@ public class UserController {
     public ArrayList<Student> getAllStudents() {
         return allStudents;
     }
+
     public void saveAllStudents() {
         Database.getInstance().updateData(StudentDataKey, new Gson().toJson(allStudents));
     }
