@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.195" />
 
-    <TextView
+    <EditText
         android:id="@+id/assignmentAnswerId"
         android:layout_width="224dp"
         android:layout_height="126dp"
