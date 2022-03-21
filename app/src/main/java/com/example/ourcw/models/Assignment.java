@@ -111,4 +111,13 @@ public class Assignment {
             }
         }
     }
+
+    public Submission getStudentSubmission(String studentId) {
+        for (Submission submission : this.submissions) {
+            if (submission.getStudentID().equals(studentId)) {
+                return submission;
+            }
+        }
+        return null;
+    }
 }
