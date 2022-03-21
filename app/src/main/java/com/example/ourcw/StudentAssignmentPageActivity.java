@@ -55,7 +55,6 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
         assignmentScore = findViewById(R.id.assignmentScoreId);
 
 
-
         String assignmentId = intent.getStringExtra("assignmentId");
         String classroomId = intent.getStringExtra("classId");
 
@@ -67,10 +66,10 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
 
         assignmentName.setText(assignment.getAssignmentName());
 
-        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
             submission = assignment.getStudentSubmission(student.getStudentID());
             assignmentAnswer.setText(submission.getAnswer());
-        }else assignmentAnswer.setText("");
+        } else assignmentAnswer.setText("");
 
         submitAnsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,12 +80,11 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertSubmit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+                        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer(assignmentAnswer.getText().toString());
-                        }else{
-                            submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
-                            //assignment.getStudentSubmission(student.getStudentID()).setAnswer(assignmentAnswer.getText().toString());
+                        } else {
+                            assignment.addSubmission(student.getStudentID(), assignmentAnswer.getText().toString());
                         }
 
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer submitted", Toast.LENGTH_LONG);
@@ -114,10 +112,10 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertEdit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+                        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer(assignmentAnswer.getText().toString());
-                        }else{
+                        } else {
                             submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
                             //assignment.getStudentSubmission(student.getStudentID()).setAnswer(assignmentAnswer.getText().toString());
                         }
@@ -146,10 +144,10 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertDelete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if(assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+                        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer("");
-                        }else{
+                        } else {
                             submission = new Submission(student.getStudentID(), "");
                             //assignment.getStudentSubmission(student.getStudentID()).setAnswer("");
                         }
@@ -167,9 +165,9 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertDelete.show();
             }
         });
-        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
             assignmentScore.setText(submission.getScore());
-        }else{
+        } else {
             assignmentScore.setText("0");
         }
     }
