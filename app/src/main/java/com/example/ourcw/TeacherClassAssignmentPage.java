@@ -88,6 +88,7 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
                             toast.show();
                             newAssignmentId.setText("");
                             newAssignmentName.setText("");
+                            newAssignmentQuestion.setText("");
                         } else {
                             Toast toast = null;
                             if (classroom.checkIfAssignmentIdExist(assignmentID)) {
@@ -102,6 +103,7 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
                             toast.show();
                             newAssignmentId.setText("");
                             newAssignmentName.setText("");
+                            newAssignmentQuestion.setText("");
                         }
                     }
                 });
@@ -110,6 +112,7 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
                     public void onClick(DialogInterface dialogInterface, int i) {
                         newAssignmentId.setText("");
                         newAssignmentName.setText("");
+                        newAssignmentQuestion.setText("");
                         Toast toast = Toast.makeText(TeacherClassAssignmentPage.this, "no class has been created", Toast.LENGTH_LONG);
                         toast.show();
                     }
