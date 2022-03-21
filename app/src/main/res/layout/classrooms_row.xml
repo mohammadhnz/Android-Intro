@@ -9,7 +9,7 @@
         android:id="@+id/classroomIdRowId"
         android:layout_width="295dp"
         android:layout_height="66dp"
-        android:background="#E3EC91"
+        android:background="#A1E3EC91"
         android:text="TextView"
         android:textColor="#000000"
         app:layout_constraintBottom_toBottomOf="parent"

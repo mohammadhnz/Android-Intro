@@ -13,6 +13,7 @@ public class  Student extends User {
         this.studentID = studentID;
         students.add(this);
     }
+
     public static boolean is_valid_student_id(String newStudentID){
         for (int i = 0; i < students.size(); i+=1){
             if (students.get(i).studentID.equals(newStudentID)){
