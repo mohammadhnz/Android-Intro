@@ -13,6 +13,7 @@ public class  Student extends User {
         this.studentID = studentID;
         students.add(this);
     }
+
     public static boolean is_valid_student_id(String newStudentID){
         for (int i = 0; i < students.size(); i+=1){
             if (students.get(i).studentID.equals(newStudentID)){
@@ -88,8 +89,8 @@ public class  Student extends User {
 
     public ArrayList<Classroom> classesStudentDoesNotHave(){
         ArrayList<Classroom> otherClasses = new ArrayList<>();
-        for (Classroom classroom : getClassrooms()) {
-            if (checkIfAlreadyInClass(classroom.getClassId())){
+        for (Classroom classroom : Classroom.classrooms) {
+            if (!getClassrooms().contains(classroom)){
                 otherClasses.add(classroom);
             }
         }

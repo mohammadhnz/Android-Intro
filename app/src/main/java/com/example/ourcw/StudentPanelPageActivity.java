@@ -84,6 +84,7 @@ public class StudentPanelPageActivity extends AppCompatActivity implements Class
         Classroom classroom = newClassrooms.get(position);
         student.joinClass(classroom.getClassId());
         studentClassrooms = student.getClassrooms();
+        UserController.getInstance().saveAllStudents();
         adapter.notifyDataSetChanged();
         newClassrooms.remove(classroom);
         newAdapter.notifyDataSetChanged();

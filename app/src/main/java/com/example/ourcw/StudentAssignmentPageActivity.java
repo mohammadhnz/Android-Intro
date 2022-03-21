@@ -26,7 +26,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
     private Button submitAnsBtn;
     private Button deleteAnsBtn;
     private Button editAnsBtn;
-    private TextView assignmentAnswer;
+    private EditText assignmentAnswer;
     private EditText assignmentName;
     private EditText assignmentScore;
 
