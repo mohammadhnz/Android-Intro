@@ -4,13 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TeacherClassAssignmentPage">
+    tools:context=".TeacherClassAssignmentPage"
+    android:background="@drawable/gradient_background_pink">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/classAssignmentsRecyclerId"
         android:layout_width="295dp"
         android:layout_height="356dp"
-        android:background="#E8ECCB"
+        android:background="#8DFFFFFF"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -35,7 +36,7 @@
         android:id="@+id/newAssignmentIdTextId"
         android:layout_width="230dp"
         android:layout_height="46dp"
-        android:background="#AEB9F8"
+        android:background="#A6FFFFFF"
         android:hint="Assignment Id"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,7 +49,7 @@
         android:id="@+id/newAssignmentNameTextId"
         android:layout_width="226dp"
         android:layout_height="50dp"
-        android:background="#AEB9F8"
+        android:background="#A4FFFFFF"
         android:hint="Assignment Name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,15 +60,15 @@
 
     <Button
         android:id="@+id/teacherAddNewAssignmentBtnId"
-        android:layout_width="146dp"
-        android:layout_height="48dp"
+        android:layout_width="153dp"
+        android:layout_height="64dp"
         android:text="Add Assignment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.781"
+        app:layout_constraintHorizontal_bias="0.802"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintVertical_bias="0.943" />
 
     <TextView
         android:id="@+id/textView5"
