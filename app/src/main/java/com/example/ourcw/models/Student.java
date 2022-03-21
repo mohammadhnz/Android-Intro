@@ -88,8 +88,8 @@ public class  Student extends User {
 
     public ArrayList<Classroom> classesStudentDoesNotHave(){
         ArrayList<Classroom> otherClasses = new ArrayList<>();
-        for (Classroom classroom : getClassrooms()) {
-            if (checkIfAlreadyInClass(classroom.getClassId())){
+        for (Classroom classroom : Classroom.classrooms) {
+            if (!getClassrooms().contains(classroom)){
                 otherClasses.add(classroom);
             }
         }

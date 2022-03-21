@@ -25,6 +25,7 @@
         android:background="#C3F8F3"
         android:hint="Class Name"
         android:textAlignment="center"
+        android:textColor="#090606"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -34,10 +35,11 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="125dp"
-        android:layout_height="33dp"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
         android:background="#EDF1C9"
         android:text="Professor Name:"
+        android:textColor="#150E0E"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,15 +51,16 @@
     <TextView
         android:id="@+id/teacherOfClassNameTextId"
         android:layout_width="129dp"
-        android:layout_height="76dp"
+        android:layout_height="wrap_content"
         android:background="#B3E8EF"
         android:text="TextView"
+        android:textColor="#050303"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.574"
+        app:layout_constraintHorizontal_bias="0.656"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
+        app:layout_constraintVertical_bias="0.169" />
 
     <ImageButton
         android:id="@+id/closeClassroomPageButton"
