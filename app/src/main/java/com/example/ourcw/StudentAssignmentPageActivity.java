@@ -17,6 +17,7 @@ import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Assignment;
 import com.example.ourcw.models.Classroom;
 import com.example.ourcw.models.Student;
+import com.example.ourcw.models.Submission;
 
 import java.util.Objects;
 
@@ -29,6 +30,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
     private EditText assignmentAnswer;
     private EditText assignmentName;
     private EditText assignmentScore;
+    private Submission submission;
 
 
     @Override
@@ -55,7 +57,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
 
 
         String assignmentId = intent.getStringExtra("assignmentId");
-        String classroomId = intent.getStringExtra("classroomId");
+        String classroomId = intent.getStringExtra("classId");
 
 
         Student student = (Student) UserController.getInstance().getCurrentUser();
@@ -69,7 +71,6 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
             assignmentAnswer.setText(assignment.getAnswer());
         }else assignmentAnswer.setText("");
 
-        assignmentScore.setText(String.valueOf(assignment.getScore()));
 
         submitAnsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -80,8 +81,13 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertSubmit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        student.submitAssignmentAnswer(
-                                classroomId, assignmentId, assignmentAnswer.getText().toString());
+                        if(assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+                            submission = assignment.getStudentSubmission(student.getStudentID());
+                            submission.setAnswer(assignmentAnswer.getText().toString());
+                        }else{
+                            submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
+                        }
+
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer submitted", Toast.LENGTH_LONG);
                         toast.show();
                     }
@@ -107,8 +113,12 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertEdit.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        student.submitAssignmentAnswer(
-                                classroomId, assignmentId, assignmentAnswer.getText().toString());
+                        if(assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+                            submission = assignment.getStudentSubmission(student.getStudentID());
+                            submission.setAnswer(assignmentAnswer.getText().toString());
+                        }else{
+                            submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
+                        }
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer edited", Toast.LENGTH_LONG);
                         toast.show();
                     }
@@ -134,8 +144,12 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertDelete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        student.deleteAssignmentAnswer(classroomId, assignmentId);
-                        assignmentAnswer.setText("");
+                        if(assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+                            submission = assignment.getStudentSubmission(student.getStudentID());
+                            submission.setAnswer("");
+                        }else{
+                            submission = new Submission(student.getStudentID(), "");
+                        }
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "assignment deleted", Toast.LENGTH_LONG);
                         toast.show();
                     }
@@ -150,5 +164,10 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                 alertDelete.show();
             }
         });
+        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+            assignmentScore.setText(submission.getScore());
+        }else{
+            assignmentScore.setText("0");
+        }
     }
 }

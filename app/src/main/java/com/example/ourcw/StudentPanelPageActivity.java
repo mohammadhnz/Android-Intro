@@ -71,7 +71,6 @@ public class StudentPanelPageActivity extends AppCompatActivity implements Class
         addNewClassBtn = findViewById(R.id.addNewClassBtnId);
 
         student = (Student) UserController.getInstance().getCurrentUser();
-        assert student != null;
         studentClassrooms = student.getClassrooms();
         newClassrooms = student.classesStudentDoesNotHave();
 
