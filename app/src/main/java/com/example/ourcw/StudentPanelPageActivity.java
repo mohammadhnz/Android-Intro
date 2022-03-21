@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.ourcw.HelperObjects.ClassesRecyclerViewAdapter;
 import com.example.ourcw.controllers.UserController;
@@ -43,6 +44,22 @@ public class StudentPanelPageActivity extends AppCompatActivity implements Class
         closeStudentPanelBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String message = UserController.getInstance().logout();
+                if (message.startsWith("Error")) {
+                    Toast toast = Toast.makeText(
+                            StudentPanelPageActivity.this,
+                            message,
+                            Toast.LENGTH_LONG
+                    );
+                    toast.show();
+                    return;
+                }
+                Toast toast = Toast.makeText(
+                        StudentPanelPageActivity.this,
+                        message,
+                        Toast.LENGTH_LONG
+                );
+                toast.show();
                 Intent intent1 = new Intent();
                 setResult(100, intent1);
                 finish();

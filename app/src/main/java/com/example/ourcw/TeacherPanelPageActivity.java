@@ -24,7 +24,7 @@ import com.example.ourcw.models.Teacher;
 
 import java.util.ArrayList;
 
-public class TeacherPanelPageActivity extends AppCompatActivity implements ClassesRecyclerViewAdapter.OnNoteListener{
+public class TeacherPanelPageActivity extends AppCompatActivity implements ClassesRecyclerViewAdapter.OnNoteListener {
 
     RecyclerView teacherClassesRecycler;
     EditText newClassId;
@@ -47,6 +47,22 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
         closeTeacherPanelPage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String message = UserController.getInstance().logout();
+                if (message.startsWith("Error")) {
+                    Toast toast = Toast.makeText(
+                            TeacherPanelPageActivity.this,
+                            message,
+                            Toast.LENGTH_LONG
+                    );
+                    toast.show();
+                    return;
+                }
+                Toast toast = Toast.makeText(
+                        TeacherPanelPageActivity.this,
+                        message,
+                        Toast.LENGTH_LONG
+                );
+                toast.show();
                 Intent intent1 = new Intent();
                 setResult(100, intent1);
                 finish();
@@ -88,7 +104,7 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
                             toast.show();
                             newClassId.setText("");
                             newClassName.setText("");
-                        }else{
+                        } else {
                             teacher.createClass(classId, className);
                             classrooms = teacher.getClassrooms();
                             adapter.notifyDataSetChanged();
