@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="@drawable/gradient_background_blue">
 
 
     <EditText
@@ -29,18 +30,21 @@
         android:id="@+id/loginButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FA681DEF"
         android:text="@string/login" />
 
     <Button
         android:id="@+id/navToRegistrationStudentButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FA681DEF"
         android:text="Register Student" />
 
     <Button
         android:id="@+id/navToRegistrationTeacherButtonId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:backgroundTint="#FA681DEF"
         android:text="Register Teacher" />
 
 </LinearLayout>
