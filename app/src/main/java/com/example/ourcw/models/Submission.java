@@ -25,6 +25,7 @@ public class Submission {
     public void setAnswer(String answer) {
         this.answer = answer;
         this.score = 0;
+        Classroom.saveAllClassrooms();
     }
 
     public String getAnswer() {

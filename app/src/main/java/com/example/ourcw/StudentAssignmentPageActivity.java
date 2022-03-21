@@ -116,8 +116,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer(assignmentAnswer.getText().toString());
                         } else {
-                            submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
-                            //assignment.getStudentSubmission(student.getStudentID()).setAnswer(assignmentAnswer.getText().toString());
+                            assignment.addSubmission(student.getStudentID(), assignmentAnswer.getText().toString());
                         }
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer edited", Toast.LENGTH_LONG);
                         toast.show();
@@ -148,7 +147,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer("");
                         } else {
-                            submission = new Submission(student.getStudentID(), "");
+                            assignment.addSubmission(student.getStudentID(), "");
                             //assignment.getStudentSubmission(student.getStudentID()).setAnswer("");
                         }
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "assignment deleted", Toast.LENGTH_LONG);
