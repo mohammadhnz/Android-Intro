@@ -64,6 +64,7 @@
         android:layout_height="48dp"
         android:backgroundTint="#FFE37171"
         android:text="Add Class"
+        app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.781"

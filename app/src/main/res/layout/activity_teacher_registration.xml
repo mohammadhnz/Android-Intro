@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context=".TeacherRegistrationActivity"
@@ -53,15 +54,17 @@ android:orientation="vertical"
         android:hint="@string/university"
         android:inputType="textPersonName" />
 
-<Button
-    android:id="@+id/teacherRegisterButtonID"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/register" />
+    <Button
+        android:id="@+id/teacherRegisterButtonID"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/register"
+        app:cornerRadius="25dp" />
 
-<Button
-    android:id="@+id/teacherBackLoginButtonId"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/back" />
+    <Button
+        android:id="@+id/teacherBackLoginButtonId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        app:cornerRadius="25dp" />
 </LinearLayout>
