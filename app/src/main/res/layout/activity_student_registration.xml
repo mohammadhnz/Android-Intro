@@ -37,9 +37,10 @@
         android:id="@+id/studentLastNameId"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:autofillHints=""
         android:ems="10"
-        android:inputType="textPersonName"
-        android:autofillHints="" />
+        android:hint="@string/last_name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/studentId"
