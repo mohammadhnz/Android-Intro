@@ -35,6 +35,7 @@ public class StudentRegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = new Intent();
                 setResult(100, intent1);
+                setEmptyTextEditors();
                 finish();
             }
         });
@@ -71,6 +72,7 @@ public class StudentRegistrationActivity extends AppCompatActivity {
                             createToast(response);
                             Intent intent1 = new Intent();
                             setResult(100, intent1);
+                            setEmptyTextEditors();
                             finish();
                         } else {
                             createToast("repeated username");
@@ -95,5 +97,19 @@ public class StudentRegistrationActivity extends AppCompatActivity {
     }
     private boolean isThereEmptyInput(String username, String password, String firstname, String lastname, String studentID) {
         return username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || studentID.isEmpty();
+    }
+
+    private void setEmptyTextEditors(){
+        username = findViewById(R.id.studentUsernameID);
+        password = findViewById(R.id.studentPasswordId);
+        firstname = findViewById(R.id.studentFirstNameId);
+        lastname = findViewById(R.id.studentLastNameId);
+        studentID = findViewById(R.id.studentId);
+        String emptyString = "";
+        username.setText(emptyString);
+        password.setText(emptyString);
+        firstname.setText(emptyString);
+        lastname.setText(emptyString);
+        studentID.setText(emptyString);
     }
 }
