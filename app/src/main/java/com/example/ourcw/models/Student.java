@@ -1,11 +1,13 @@
 package com.example.ourcw.models;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
-public class  Student extends User {
+public class Student extends User {
     private static List<Student> students = new ArrayList<>();
     private String studentID;
+    private HashMap<Classroom, HashMap<String, Integer>> assignmentsScores = new HashMap<>();
 
 
     public Student(String username, String password, String firstName, String lastName, String studentID) {
@@ -13,9 +15,10 @@ public class  Student extends User {
         this.studentID = studentID;
         students.add(this);
     }
-    public static boolean is_valid_student_id(String newStudentID){
-        for (int i = 0; i < students.size(); i+=1){
-            if (students.get(i).studentID.equals(newStudentID)){
+
+    public static boolean is_valid_student_id(String newStudentID) {
+        for (int i = 0; i < students.size(); i += 1) {
+            if (students.get(i).studentID.equals(newStudentID)) {
                 return false;
             }
         }
@@ -38,27 +41,27 @@ public class  Student extends User {
         this.studentID = studentID;
     }
 
-    public static Student getStudentById(String studentId){
+    public static Student getStudentById(String studentId) {
         for (Student student : students) {
-            if (student.getStudentID().equals(studentId)){
+            if (student.getStudentID().equals(studentId)) {
                 return student;
             }
         }
         return null;
     }
 
-    public boolean checkIfAlreadyInClass(String classId){
+    public boolean checkIfAlreadyInClass(String classId) {
         // first we check if class exists at all, if it does we check if student is already in class or not
         Classroom classroom = null;
-        if (Classroom.checkIfClassExist(classId)){
+        if (Classroom.checkIfClassExist(classId)) {
             classroom = Classroom.getClassByIdFromALlClasses(classId);
             return getClassrooms().contains(classroom) && classroom != null;
         }
         return false;
     }
 
-    public void joinClass(String classId){
-        if (Classroom.checkIfClassExist(classId) && !checkIfAlreadyInClass(classId)){
+    public void joinClass(String classId) {
+        if (Classroom.checkIfClassExist(classId) && !checkIfAlreadyInClass(classId)) {
             //if class exist, we get it and student doesn't have it already, we
             //add the class to students classes list
             //we also add student to that class
@@ -70,36 +73,36 @@ public class  Student extends User {
         }
     }
 
-    public void submitAssignmentAnswer(String classId, String assignmentName, String answer){
+    public void submitAssignmentAnswer(String classId, String assignmentName, String answer) {
         Classroom classroom = getUserClassById(classId);
-        if (classroom.checkIfClassHasThisAssignment(assignmentName)){
+        if (classroom.checkIfClassHasThisAssignment(assignmentName)) {
             Assignment assignment = classroom.getAssignmentOfClassById(assignmentName);
             assignment.setAnswer(answer);
         }
     }
 
-    public void deleteAssignmentAnswer(String classId, String assignmentId){
+    public void deleteAssignmentAnswer(String classId, String assignmentId) {
         Classroom classroom = getUserClassById(classId);
-        if (classroom.checkIfClassHasThisAssignment(assignmentId)){
+        if (classroom.checkIfClassHasThisAssignment(assignmentId)) {
             Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
             assignment.setAnswer("");
         }
     }
 
-    public ArrayList<Classroom> classesStudentDoesNotHave(){
+    public ArrayList<Classroom> classesStudentDoesNotHave() {
         ArrayList<Classroom> otherClasses = new ArrayList<>();
         for (Classroom classroom : getClassrooms()) {
-            if (checkIfAlreadyInClass(classroom.getClassId())){
+            if (checkIfAlreadyInClass(classroom.getClassId())) {
                 otherClasses.add(classroom);
             }
         }
         return otherClasses;
     }
 
-    public double checkScoreOfAssignment(String assignmentId, String classroomId){
-        if (checkIfAlreadyInClass(classroomId)){
+    public double checkScoreOfAssignment(String assignmentId, String classroomId) {
+        if (checkIfAlreadyInClass(classroomId)) {
             Classroom classroom = getUserClassById(classroomId);
-            if (classroom.checkIfClassHasThisAssignment(assignmentId)){
+            if (classroom.checkIfClassHasThisAssignment(assignmentId)) {
                 Assignment assignment = classroom.getAssignmentOfClassById(assignmentId);
                 return assignment.getScore();
             }
@@ -107,4 +110,17 @@ public class  Student extends User {
         return 0;
     }
 
+    public void setScore(Classroom classroom, String assignmentId, Integer score) throws Exception {
+        if (!this.assignmentsScores.containsKey(classroom)) {
+            this.assignmentsScores.put(classroom, new HashMap<String, Integer>());
+        }
+        this.assignmentsScores.get(classroom).put(assignmentId, score);
+    }
+
+    public HashMap<String, Integer> getAssignmentsScores(Classroom classroom) {
+        if (!this.assignmentsScores.containsKey(classroom)) {
+            this.assignmentsScores.put(classroom, new HashMap<String, Integer>());
+        }
+        return this.assignmentsScores.get(classroom);
+    }
 }

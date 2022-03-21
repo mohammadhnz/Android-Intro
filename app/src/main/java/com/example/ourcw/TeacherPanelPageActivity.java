@@ -122,8 +122,7 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
     @Override
     public void onNoteClickShowClassPage(int position) {
         Classroom classroom = classrooms.get(position);
-        Intent intent = new Intent(this, ClassroomActivity.class);
-        intent.putExtra("teacherId", teacher.getUsername());
+        Intent intent = new Intent(this, TeacherClassAssignmentPage.class);
         intent.putExtra("classId", classroom.getClassId());
         startActivity(intent);
     }

@@ -1,5 +1,7 @@
 package com.example.ourcw.models;
 
+import androidx.annotation.NonNull;
+
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
@@ -52,6 +54,12 @@ public class Assignment {
 
     public boolean isAlreadyHasAnswer(){
         return answer != null;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return this.assignmentName + "  " + this.assignmentId;
     }
 
 }
