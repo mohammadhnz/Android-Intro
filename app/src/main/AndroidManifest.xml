@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurCw">
         <activity
+            android:name=".TeacherClassAssignmentPage"
+            android:exported="false" />
+        <activity
             android:name=".TeacherPanelPageActivity"
             android:exported="false" />
         <activity
