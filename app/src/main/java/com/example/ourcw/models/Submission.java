@@ -27,6 +27,10 @@ public class Submission {
         this.score = 0;
     }
 
+    public String getAnswer() {
+        return answer;
+    }
+
     @Override
     public String toString() {
         return "Student: " + studentID + ", Score: " + score + "\n" +

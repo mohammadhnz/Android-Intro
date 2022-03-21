@@ -67,10 +67,10 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
 
         assignmentName.setText(assignment.getAssignmentName());
 
-        if (assignment.isAlreadyHasAnswer()){
-            assignmentAnswer.setText(assignment.getAnswer());
+        if (assignment.checkIfStudentSubmissionExists(student.getStudentID())){
+            submission = assignment.getStudentSubmission(student.getStudentID());
+            assignmentAnswer.setText(submission.getAnswer());
         }else assignmentAnswer.setText("");
-
 
         submitAnsBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -86,6 +86,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                             submission.setAnswer(assignmentAnswer.getText().toString());
                         }else{
                             submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
+                            //assignment.getStudentSubmission(student.getStudentID()).setAnswer(assignmentAnswer.getText().toString());
                         }
 
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer submitted", Toast.LENGTH_LONG);
@@ -118,6 +119,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                             submission.setAnswer(assignmentAnswer.getText().toString());
                         }else{
                             submission = new Submission(student.getStudentID(), assignmentAnswer.getText().toString());
+                            //assignment.getStudentSubmission(student.getStudentID()).setAnswer(assignmentAnswer.getText().toString());
                         }
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "Answer edited", Toast.LENGTH_LONG);
                         toast.show();
@@ -149,6 +151,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                             submission.setAnswer("");
                         }else{
                             submission = new Submission(student.getStudentID(), "");
+                            //assignment.getStudentSubmission(student.getStudentID()).setAnswer("");
                         }
                         Toast toast = Toast.makeText(StudentAssignmentPageActivity.this, "assignment deleted", Toast.LENGTH_LONG);
                         toast.show();
