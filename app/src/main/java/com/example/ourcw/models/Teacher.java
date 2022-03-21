@@ -1,5 +1,7 @@
 package com.example.ourcw.models;
 
+import com.example.ourcw.controllers.UserController;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -45,6 +47,7 @@ public class Teacher extends User {
             ArrayList<Classroom> c = this.getClassrooms();
             c.add(new Classroom(classId, className, this.getUsername()));
             this.setClassrooms(c);
+            UserController.getInstance().saveAllTeachers();
         }
     }
     @Override

@@ -2,8 +2,10 @@ package com.example.ourcw.controllers;
 
 import android.content.SharedPreferences;
 
+import com.example.ourcw.models.Classroom;
 import com.example.ourcw.models.Student;
 import com.example.ourcw.models.Teacher;
+import com.example.ourcw.models.User;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -11,6 +13,7 @@ import android.content.SharedPreferences;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Database {
     private static Database database;
@@ -51,14 +54,36 @@ public class Database {
         this.sharedPreferences = sharedPreferences;
         String studentsData = sharedPreferences.getString("all_students", "");
         String teachersData = sharedPreferences.getString("all_teachers", "");
+        String classedData = sharedPreferences.getString("all_classrooms", "");
         Gson gson = new Gson();
 
         retrieveStudentsData(teachersData, gson);
         retrieveTeachersData(studentsData, gson);
-
         UserController.getInstance().resetAllUsers();
 
+        retrieveClassesData(classedData, gson);
         this.dataRetrievedAlready = true;
+    }
+
+    private void retrieveClassesData(String classesData, Gson gson) {
+        ArrayList<Classroom> allClasses = new ArrayList<>();
+        Type classroomsListType = new TypeToken<ArrayList<Classroom>>() {
+        }.getType();
+        allClasses = gson.fromJson(classesData, classroomsListType);
+        if (allClasses != null) {
+            Classroom.classrooms = allClasses;
+        }
+        HashMap<String, Classroom> classroomsIds = new HashMap<>();
+        for (Classroom classroom : Classroom.classrooms) {
+            classroomsIds.put(classroom.getClassId(), classroom);
+        }
+        for (User user : User.getUsers()) {
+            ArrayList<Classroom> classrooms = new ArrayList<>();
+            for (Classroom classroom : user.getClassrooms()) {
+                classrooms.add(classroomsIds.get(classroom.getClassId()));
+            }
+            user.setClassrooms(classrooms);
+        }
     }
 
     private void retrieveTeachersData(String studentsData, Gson gson) {

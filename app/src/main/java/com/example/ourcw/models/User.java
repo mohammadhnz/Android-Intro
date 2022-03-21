@@ -29,6 +29,7 @@ public abstract class User {
         }
         return true;
     }
+
     public static List<User> getUsers() {
         return users;
     }
@@ -102,6 +103,4 @@ public abstract class User {
         }
         return null;
     }
-
-
 }

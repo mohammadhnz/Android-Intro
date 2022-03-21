@@ -1,5 +1,9 @@
 package com.example.ourcw.models;
 
+import com.example.ourcw.controllers.Database;
+import com.example.ourcw.controllers.UserController;
+import com.google.gson.Gson;
+
 import java.util.ArrayList;
 
 public class Classroom {
@@ -8,12 +12,13 @@ public class Classroom {
     private String teacherUsername;
     private ArrayList<Assignment> assignments = new ArrayList<>();
     public static ArrayList<Classroom> classrooms = new ArrayList<>();
-
+    public static final String ClassroomsKey = "all_classrooms";
     public Classroom(String classId, String className, String teacherUsername) {
         this.className = className;
         this.classId = classId;
         this.teacherUsername = teacherUsername;
         classrooms.add(this);
+        saveAllClassrooms();
     }
 
     public String getClassId() {
@@ -71,6 +76,10 @@ public class Classroom {
             }
         }
         return false;
+    }
+
+    public void saveAllClassrooms() {
+        Database.getInstance().updateData(ClassroomsKey, new Gson().toJson(classrooms));
     }
 
 
