@@ -3,7 +3,7 @@ package com.example.ourcw.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class User {
+public class User {
     private static ArrayList<User> users = new ArrayList<>();
     private ArrayList<Classroom> classrooms = new ArrayList<>();
     private String username;
