@@ -28,12 +28,14 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
     RecyclerView classAssignmentsRecycler;
     EditText newAssignmentId;
     EditText newAssignmentName;
+    EditText newAssignmentQuestion;
     Button teacherAddNewAssignmentButton;
     ImageButton closeClassAssignments;
     TeacherClassPageAdapter adapter;
 
     Teacher teacher;
     ArrayList<Assignment> assignments;
+    Classroom classroom;
 
     @SuppressLint("NotifyDataSetChanged")
     @Override
@@ -52,12 +54,12 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
             }
         });
 
-        teacherAddNewAssignmentButton = findViewById(R.id.teachersClassesRecyclerId);
         newAssignmentId = findViewById(R.id.newAssignmentIdTextId);
         newAssignmentName = findViewById(R.id.newAssignmentNameTextId);
+        newAssignmentQuestion = findViewById(R.id.newAssignmentQuestionTextId);
         teacherAddNewAssignmentButton = findViewById(R.id.teacherAddNewAssignmentBtnId);
         String classroomsId = intent.getStringExtra("classId");
-        Classroom classroom = Classroom.getClassByIdFromALlClasses(classroomsId);
+        classroom = Classroom.getClassByIdFromALlClasses(classroomsId);
         assignments = classroom.getAssignments();
         classAssignmentsRecycler = findViewById(R.id.classAssignmentsRecyclerId);
 
@@ -72,6 +74,7 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
             public void onClick(View view) {
                 String assignmentName = newAssignmentName.getText().toString();
                 String assignmentID = newAssignmentId.getText().toString();
+                String assignmentQuestion = newAssignmentQuestion.getText().toString();
 
                 AlertDialog.Builder alertSubmit = new AlertDialog.Builder(TeacherClassAssignmentPage.this);
                 alertSubmit.setTitle("Creating New Assignment");
@@ -80,16 +83,22 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
                     @SuppressLint("NotifyDataSetChanged")
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        if (assignmentID.equals("") || classroom.checkIfAssignmentIdExist(assignmentID)) {
-                            Toast toast = Toast.makeText(TeacherClassAssignmentPage.this, "please enter valid assignmentID", Toast.LENGTH_LONG);
+                        if (assignmentID.equals("") || assignmentQuestion.equals("")) {
+                            Toast toast = Toast.makeText(TeacherClassAssignmentPage.this, "please enter valid assignmentID and also assignmentQuestion", Toast.LENGTH_LONG);
                             toast.show();
                             newAssignmentId.setText("");
                             newAssignmentName.setText("");
                         } else {
-                            classroom.createAssignment(assignmentID, assignmentName);
+                            Toast toast = null;
+                            if (classroom.checkIfAssignmentIdExist(assignmentID)) {
+                                classroom.updateAssignment(assignmentID,assignmentName);
+                                toast = Toast.makeText(TeacherClassAssignmentPage.this, "assignment updates successfully", Toast.LENGTH_LONG);
+                            }else {
+                                classroom.createAssignment(assignmentID, assignmentName, assignmentQuestion);
+                                toast = Toast.makeText(TeacherClassAssignmentPage.this, "assignment create", Toast.LENGTH_LONG);
+                            }
                             assignments = classroom.getAssignments();
                             adapter.notifyDataSetChanged();
-                            Toast toast = Toast.makeText(TeacherClassAssignmentPage.this, "assignment create", Toast.LENGTH_LONG);
                             toast.show();
                             newAssignmentId.setText("");
                             newAssignmentName.setText("");
@@ -119,9 +128,9 @@ public class TeacherClassAssignmentPage extends AppCompatActivity implements Tea
     @Override
     public void onNoteClickShowClassPage(int position) {
         Assignment assignment = assignments.get(position);
-        Intent intent = new Intent(this, ClassroomActivity.class);
-//        intent.putExtra("teacherId", teacher.getUsername());
-//        intent.putExtra("classId", classroom.getClassId());
+        Intent intent = new Intent(this, TeacherAssignmentGrading.class);
+        intent.putExtra("classId", classroom.getClassId());
+        intent.putExtra("assignmentId", assignment.getAssignmentId());
         startActivity(intent);
     }
 }

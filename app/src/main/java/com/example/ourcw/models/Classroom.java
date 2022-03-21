@@ -78,14 +78,14 @@ public class Classroom {
         return false;
     }
 
-    public void saveAllClassrooms() {
+    public static void saveAllClassrooms() {
         Database.getInstance().updateData(ClassroomsKey, new Gson().toJson(classrooms));
     }
 
-    public void createAssignment(String assignmentID, String assignmentName) {
-        Assignment assignment = new Assignment(assignmentID, assignmentName);
+    public void createAssignment(String assignmentID, String assignmentName, String question) {
+        Assignment assignment = new Assignment(assignmentID, assignmentName, question);
         this.assignments.add(assignment);
-        this.saveAllClassrooms();
+        saveAllClassrooms();
     }
 
 
@@ -96,5 +96,15 @@ public class Classroom {
             }
         }
         return false;
+    }
+
+    public void updateAssignment(String assignmentID, String assignmentName) {
+        for (Assignment assignment : this.assignments) {
+            if (assignment.getAssignmentId().equals(assignmentID)) {
+                assignment.setAssignmentName(assignmentName);
+                break;
+            }
+        }
+        saveAllClassrooms();
     }
 }

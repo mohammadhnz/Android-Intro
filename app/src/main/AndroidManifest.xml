@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.OurCw">
         <activity
+            android:name=".TeacherAssignmentGrading"
+            android:exported="false" />
+        <activity
             android:name=".TeacherClassAssignmentPage"
             android:exported="false" />
         <activity

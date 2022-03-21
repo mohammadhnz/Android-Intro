@@ -2,6 +2,8 @@ package com.example.ourcw.models;
 
 import androidx.annotation.NonNull;
 
+import java.util.ArrayList;
+
 public class Assignment {
     private String assignmentId;
     private String assignmentName;
@@ -9,10 +11,13 @@ public class Assignment {
     private String question;
     private Teacher teacherName;
     private double score;
+    private ArrayList<Submission> submissions;
 
-    public Assignment(String assignmentId, String assignmentName) {
+    public Assignment(String assignmentId, String assignmentName, String question) {
         this.assignmentId = assignmentId;
         this.assignmentName = assignmentName;
+        this.submissions = new ArrayList<>();
+        this.question = question;
         this.score = 0.0;
     }
 
@@ -52,14 +57,58 @@ public class Assignment {
         return score;
     }
 
-    public boolean isAlreadyHasAnswer(){
+    public boolean isAlreadyHasAnswer() {
         return answer != null;
     }
 
-    @NonNull
-    @Override
-    public String toString() {
-        return this.assignmentName + "  " + this.assignmentId;
+    public void addSubmission(String studentID, String answer) {
+        for (Submission submission : this.submissions) {
+            if (submission.getStudentID().equals(studentID)) {
+                submission.setAnswer(answer);
+                Classroom.saveAllClassrooms();
+                return;
+            }
+        }
+        this.submissions.add(new Submission(studentID, answer));
+        Classroom.saveAllClassrooms();
     }
 
+    public void updateSubmissionScore(String studentID, Integer score) {
+        for (Submission submission : this.submissions) {
+            if (submission.getStudentID().equals(studentID)) {
+                submission.setScore(score);
+                Classroom.saveAllClassrooms();
+                return;
+            }
+        }
+    }
+
+    public ArrayList<Submission> getSubmissions() {
+        return submissions;
+    }
+
+    @Override
+    public String toString() {
+        return assignmentName + '\n' +
+                "question: " + question;
+    }
+
+    public boolean checkIfStudentSubmissionExists(String studentId) {
+        for (Submission submission : this.submissions) {
+            if (submission.getStudentID().equals(studentId)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public void gradeSubmission(String studentId, Integer score) {
+        for (Submission submission : this.submissions) {
+            if (submission.getStudentID().equals(studentId)) {
+                submission.setScore(score);
+                Classroom.saveAllClassrooms();
+                break;
+            }
+        }
+    }
 }

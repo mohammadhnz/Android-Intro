@@ -16,18 +16,19 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.ourcw.R;
 import com.example.ourcw.models.Assignment;
 import com.example.ourcw.models.Classroom;
+import com.example.ourcw.models.Submission;
 
 import java.util.ArrayList;
 
-public class TeacherClassPageAdapter extends RecyclerView.Adapter<TeacherClassPageAdapter.ViewHolder> {
-    ArrayList<Assignment> assignments;
+public class SubmissionsRecyclerViewAdaptor extends RecyclerView.Adapter<SubmissionsRecyclerViewAdaptor.ViewHolder> {
+    ArrayList<Submission> submissions;
     private LayoutInflater inflater;
     OnNoteListener onNoteListener;
     boolean showClass = true;
     private int textSize;
 
-    public TeacherClassPageAdapter(Context context, ArrayList<Assignment> assignments, OnNoteListener onNoteListener, boolean showClass) {
-        this.assignments = assignments;
+    public SubmissionsRecyclerViewAdaptor(Context context, ArrayList<Submission> submissions, OnNoteListener onNoteListener, boolean showClass) {
+        this.submissions = submissions;
         this.inflater = LayoutInflater.from(context);
         this.onNoteListener = onNoteListener;
         this.showClass = showClass;
@@ -42,19 +43,19 @@ public class TeacherClassPageAdapter extends RecyclerView.Adapter<TeacherClassPa
 
     @Override
     public int getItemCount() {
-        return assignments.size();
+        return submissions.size();
     }
 
 
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowTextViewName.setText(assignments.get(position).toString());
+        holder.rowTextViewName.setText(submissions.get(position).toString());
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    void addItems(ArrayList<Assignment> assignments) {
-        assignments.addAll(assignments);
+    void addItems(ArrayList<Submission> submissions) {
+        submissions.addAll(submissions);
         notifyDataSetChanged();
     }
 

@@ -55,15 +55,6 @@ public class Teacher extends User {
         return super.getUsername();
     }
 
-    public void createAssignment(String assignmentId, String assignmentName, String classroomId) {
-        //first we check if teacher has this class to create an assignment for; then we check if assignment does not already exist
-        //then we get the class this teacher has and wants to create assignment for
-        if (checkIfTeacherHasThisClass(getUserClassById(classroomId)) &&
-                !getUserClassById(classroomId).checkIfClassHasThisAssignment(assignmentId)) {
-            getUserClassById(classroomId).addAssignmentToClass(new Assignment(assignmentId, assignmentName));
-        }
-    }
-
     public void renameAssignment(String assignmentId, String classroomId, String assignmentNewName) {
         if (checkIfTeacherHasThisClass(getUserClassById(classroomId)) &&
                 getUserClassById(classroomId).checkIfClassHasThisAssignment(assignmentId)) {
