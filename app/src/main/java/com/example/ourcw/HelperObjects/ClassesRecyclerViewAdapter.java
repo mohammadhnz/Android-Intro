@@ -2,12 +2,15 @@ package com.example.ourcw.HelperObjects;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourcw.R;
@@ -20,6 +23,7 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
     private LayoutInflater inflater;
     OnNoteListener onNoteListener;
     boolean showClass = true;
+    private int textSize;
 
     public ClassesRecyclerViewAdapter(Context context, ArrayList<Classroom> classrooms, OnNoteListener onNoteListener, boolean showClass) {
         this.classrooms = classrooms;
@@ -41,9 +45,11 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
     }
 
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowTextView.setText(classrooms.get(position).getClassName());
+        holder.rowTextViewName.setText("Class Id : " + classrooms.get(position).getClassId());
+        //holder.rowTextViewName.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -52,14 +58,21 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
         notifyDataSetChanged();
     }
 
+    public void setTextSizes(int textSize) {
+        this.textSize = textSize;
+        notifyDataSetChanged();
+    }
+
+
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        TextView rowTextView;
+
+        TextView rowTextViewName;
         OnNoteListener onNoteListener;
 
         public ViewHolder(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
-            rowTextView = itemView.findViewById(R.id.classroomsRowId);
+            rowTextViewName = itemView.findViewById(R.id.classroomIdRowId);
             this.onNoteListener = onNoteListener;
             itemView.setOnClickListener(this);
         }

@@ -66,6 +66,7 @@ public class TeacherPanelPageActivity extends AppCompatActivity implements Class
         teacherClassesRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         assert teacher != null;
         adapter = new ClassesRecyclerViewAdapter(this, classrooms, TeacherPanelPageActivity.this, true);
+        adapter.setTextSizes(15);
         teacherClassesRecycler.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 

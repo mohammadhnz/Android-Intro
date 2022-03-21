@@ -12,7 +12,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.ourcw.R;
 import com.example.ourcw.models.Assignment;
-import com.example.ourcw.models.Classroom;
 
 import java.util.ArrayList;
 
@@ -58,7 +57,7 @@ public class AssignmentsRecyclerViewAdapter extends RecyclerView.Adapter<Assignm
 
         public ViewHolder2(@NonNull View itemView, OnNoteListener onNoteListener) {
             super(itemView);
-            rowTextView = itemView.findViewById(R.id.classroomsRowId);
+            rowTextView = itemView.findViewById(R.id.classroomIdRowId);
             this.onNoteListener = onNoteListener;
             itemView.setOnClickListener(this);
         }
