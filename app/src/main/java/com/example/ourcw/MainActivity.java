@@ -73,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this,
                         TeacherRegistrationActivity.class
                 );
+                setEmptyTextEditors();
                 startActivityForResult(
                         intent, 100
                 );
@@ -86,6 +87,7 @@ public class MainActivity extends AppCompatActivity {
                         MainActivity.this,
                         StudentRegistrationActivity.class
                 );
+                setEmptyTextEditors();
                 startActivityForResult(
                         intent, 100
                 );
@@ -116,7 +118,15 @@ public class MainActivity extends AppCompatActivity {
                     TeacherPanelPageActivity.class
             );
         }
+        setEmptyTextEditors();
         startActivity(intent);
+    }
+
+    private void setEmptyTextEditors(){
+        usernameView = findViewById(R.id.loginUsernameId);
+        passwordView = findViewById(R.id.loginPasswordId);
+        usernameView.setText("");
+        passwordView.setText("");
     }
 
 }

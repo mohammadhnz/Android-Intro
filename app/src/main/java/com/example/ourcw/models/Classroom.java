@@ -82,5 +82,19 @@ public class Classroom {
         Database.getInstance().updateData(ClassroomsKey, new Gson().toJson(classrooms));
     }
 
+    public void createAssignment(String assignmentID, String assignmentName) {
+        Assignment assignment = new Assignment(assignmentID, assignmentName);
+        this.assignments.add(assignment);
+        this.saveAllClassrooms();
+    }
 
+
+    public boolean checkIfAssignmentIdExist(String assignmentID) {
+        for (Assignment assignment : this.assignments) {
+            if (assignment.getAssignmentId().equals(assignmentID)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

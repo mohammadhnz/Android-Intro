@@ -1,7 +1,5 @@
 package com.example.ourcw;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -9,9 +7,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.ourcw.controllers.UserController;
 import com.example.ourcw.models.Student;
-import com.example.ourcw.models.Teacher;
 
 public class TeacherRegistrationActivity extends AppCompatActivity {
 
@@ -35,6 +34,7 @@ public class TeacherRegistrationActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent1 = new Intent();
                 setResult(100, intent1);
+                setEmptyTextEditors();
                 finish();
             }
         });
@@ -64,6 +64,7 @@ public class TeacherRegistrationActivity extends AppCompatActivity {
                         );
                         Intent intent1 = new Intent();
                         setResult(100, intent1);
+                        setEmptyTextEditors();
                         finish();
                     } else {
                         createToast("repeated username");
@@ -86,5 +87,19 @@ public class TeacherRegistrationActivity extends AppCompatActivity {
 
     private boolean isThereEmptyInput(String username, String password, String firstname, String lastname, String studentID) {
         return username.isEmpty() || password.isEmpty() || firstname.isEmpty() || lastname.isEmpty() || studentID.isEmpty();
+    }
+
+    private void setEmptyTextEditors(){
+        username = findViewById(R.id.teacherUsernameID);
+        password = findViewById(R.id.teacherPasswordId);
+        firstname = findViewById(R.id.teacherFirstNameId);
+        lastname = findViewById(R.id.teacherLastNameId);
+        universityID = findViewById(R.id.universityID);
+        String emptyString = "";
+        username.setText(emptyString);
+        password.setText(emptyString);
+        firstname.setText(emptyString);
+        lastname.setText(emptyString);
+        universityID.setText(emptyString);
     }
 }

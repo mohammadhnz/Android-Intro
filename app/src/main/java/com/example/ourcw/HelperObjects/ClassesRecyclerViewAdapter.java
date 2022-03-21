@@ -18,7 +18,7 @@ import com.example.ourcw.models.Classroom;
 
 import java.util.ArrayList;
 
-public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecyclerViewAdapter.ViewHolder>{
+public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecyclerViewAdapter.ViewHolder> {
     ArrayList<Classroom> classrooms;
     private LayoutInflater inflater;
     OnNoteListener onNoteListener;
@@ -53,7 +53,7 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    void addItems(ArrayList<Classroom> names){
+    void addItems(ArrayList<Classroom> names) {
         classrooms.addAll(names);
         notifyDataSetChanged();
     }
@@ -79,12 +79,13 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
 
         @Override
         public void onClick(View view) {
-            if (showClass){
+            if (showClass) {
                 onNoteListener.onNoteClickShowClassPage(getAdapterPosition());
-            }else onNoteListener.onNoteClickAddClass(getAdapterPosition());
+            } else onNoteListener.onNoteClickAddClass(getAdapterPosition());
         }
     }
-    public interface OnNoteListener{
+
+    public interface OnNoteListener {
         void onNoteClickAddClass(int position);
         void onNoteClickShowClassPage(int position);
     }
