@@ -33,13 +33,14 @@ android:orientation="vertical">
     android:inputType="textPersonName"
     android:autofillHints="" />
 
-<EditText
-    android:id="@+id/teacherLastNameId"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:ems="10"
-    android:inputType="textPersonName"
-    android:autofillHints="" />
+    <EditText
+        android:id="@+id/teacherLastNameId"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/last_name"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/universityID"
@@ -48,7 +49,7 @@ android:orientation="vertical">
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/university"
-        android:inputType="numberDecimal" />
+        android:inputType="textPersonName" />
 
 <Button
     android:id="@+id/teacherRegisterButtonID"
