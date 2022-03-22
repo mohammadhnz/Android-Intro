@@ -11,7 +11,7 @@
         android:id="@+id/assignmentNameId"
         android:layout_width="225dp"
         android:layout_height="49dp"
-        android:background="#FFFFFF"
+        android:fontFamily="serif"
         android:backgroundTint="#B9FFFFFF"
         android:ems="10"
         android:hint="@string/assignment_name"
@@ -23,7 +23,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195" />
+        app:layout_constraintVertical_bias="0.218" />
 
     <EditText
         android:id="@+id/assignmentAnswerId"
@@ -33,6 +33,7 @@
         android:backgroundTint="#B7FFFFFF"
         android:hint="Assignment Answer"
         android:textColor="#501111"
+        android:fontFamily="serif"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -42,9 +43,9 @@
 
     <Button
         android:id="@+id/submitAnsBtnId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="48dp"
+        android:layout_width="105dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="40dp"
         android:layout_marginTop="43dp"
         android:backgroundTint="#FFE37171"
         android:shadowColor="#F87474"
@@ -53,13 +54,13 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assignmentAnswerId"
-        app:layout_constraintVertical_bias="0.369"
+        app:layout_constraintVertical_bias="0.106"
         app:rippleColor="#F8F5F5" />
 
     <Button
         android:id="@+id/deleteAnsBtnId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="52dp"
         android:layout_marginEnd="40dp"
         android:backgroundTint="#E37171"
         android:text="@string/delete"
@@ -67,21 +68,21 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/assignmentAnswerId"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <Button
         android:id="@+id/editAnsBtnId"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="105dp"
+        android:layout_height="52dp"
         android:backgroundTint="#FFE37171"
         android:text="@string/edit"
         app:cornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/deleteAnsBtnId"
-        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toEndOf="@+id/submitAnsBtnId"
         app:layout_constraintTop_toBottomOf="@+id/assignmentAnswerId"
-        app:layout_constraintVertical_bias="0.443" />
+        app:layout_constraintVertical_bias="0.24" />
 
     <ImageButton
         android:id="@+id/closeAssignmentBtn"
@@ -102,6 +103,7 @@
         android:layout_height="wrap_content"
         android:backgroundTint="#CABCBC"
         android:ems="10"
+        android:fontFamily="serif"
         android:hint="Score"
         android:inputType="numberSigned|number|text|numberDecimal"
         android:minHeight="48dp"

@@ -15,6 +15,7 @@ android:orientation="vertical"
     android:layout_height="wrap_content"
     android:ems="10"
     android:hint="@string/username"
+    android:fontFamily="serif"
     android:inputType="textPersonName"
     android:autofillHints="" />
 
@@ -24,6 +25,7 @@ android:orientation="vertical"
     android:layout_height="wrap_content"
     android:ems="10"
     android:hint="@string/password"
+    android:fontFamily="serif"
     android:inputType="textPassword"
     android:autofillHints="" />
 
@@ -33,6 +35,7 @@ android:orientation="vertical"
     android:layout_height="wrap_content"
     android:ems="10"
     android:hint="@string/first_name"
+    android:fontFamily="serif"
     android:inputType="textPersonName"
     android:autofillHints="" />
 
@@ -43,6 +46,7 @@ android:orientation="vertical"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/last_name"
+        android:fontFamily="serif"
         android:inputType="textPersonName" />
 
     <EditText
@@ -52,6 +56,7 @@ android:orientation="vertical"
         android:autofillHints=""
         android:ems="10"
         android:hint="@string/university"
+        android:fontFamily="serif"
         android:inputType="textPersonName" />
 
     <Button

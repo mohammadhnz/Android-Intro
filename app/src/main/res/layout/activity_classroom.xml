@@ -24,10 +24,12 @@
         android:layout_width="217dp"
         android:layout_height="50dp"
         android:background="#00C3F8F3"
+        android:fontFamily="sans-serif-black"
         android:hint="Class Name"
         android:textAlignment="center"
-        android:textColor="@drawable/gradient_background_blue"
-        android:textSize="24sp"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        android:textColor="#490878"
+        android:textSize="34sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,8 +64,9 @@
             android:layout_width="205dp"
             android:layout_height="30dp"
             android:background="#00EDF1C9"
+            android:fontFamily="serif"
             android:text="Professor Name:"
-            android:textColor="#150E0E"
+            android:textColor="#270671"
             android:textSize="16sp" />
 
         <TextView
@@ -71,7 +74,8 @@
             android:layout_width="175dp"
             android:layout_height="38dp"
             android:background="#94FFFFFF"
+            android:fontFamily="serif"
             android:hint="teacher name"
-            android:textColor="#050303" />
+            android:textColor="#0A0A68" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

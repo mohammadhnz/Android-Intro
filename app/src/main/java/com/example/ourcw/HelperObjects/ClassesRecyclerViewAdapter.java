@@ -48,7 +48,7 @@ public class ClassesRecyclerViewAdapter extends RecyclerView.Adapter<ClassesRecy
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        holder.rowTextViewName.setText("Class Id : " + classrooms.get(position).getClassId());
+        holder.rowTextViewName.setText("Name : " + classrooms.get(position).getClassName());
         //holder.rowTextViewName.setTextSize(TypedValue.COMPLEX_UNIT_SP, textSize);
     }
 
