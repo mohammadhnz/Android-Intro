@@ -84,6 +84,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                         if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer(assignmentAnswer.getText().toString());
+                            assignmentScore.setText("0");
                         } else {
                             assignment.addSubmission(student.getStudentID(), assignmentAnswer.getText().toString());
                         }
@@ -116,6 +117,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                         if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer(assignmentAnswer.getText().toString());
+                            assignmentScore.setText("0");
                         } else {
                             assignment.addSubmission(student.getStudentID(), assignmentAnswer.getText().toString());
                         }
@@ -147,6 +149,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
                         if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
                             submission = assignment.getStudentSubmission(student.getStudentID());
                             submission.setAnswer("");
+                            assignmentScore.setText("0");
                         } else {
                             assignment.addSubmission(student.getStudentID(), "");
                             //assignment.getStudentSubmission(student.getStudentID()).setAnswer("");
