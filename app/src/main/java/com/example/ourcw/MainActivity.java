@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
         textView1 = findViewById(R.id.textView1);
         textView22 = findViewById(R.id.textView22);
         textViewAnimation = AnimationUtils.loadAnimation(this, R.anim.animate_main_activity);

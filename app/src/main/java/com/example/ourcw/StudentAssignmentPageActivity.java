@@ -38,6 +38,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_assignment_page);
         Intent intent = getIntent();
+        getSupportActionBar().hide();
         closeAssignmentBtn = findViewById(R.id.closeAssignmentBtn);
         closeAssignmentBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -165,7 +166,7 @@ public class StudentAssignmentPageActivity extends AppCompatActivity {
             }
         });
         if (assignment.checkIfStudentSubmissionExists(student.getStudentID())) {
-            assignmentScore.setText(submission.getScore());
+            assignmentScore.setText(submission.getScore().toString());
         } else {
             assignmentScore.setText("0");
         }
